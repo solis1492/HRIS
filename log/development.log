@@ -1,0 +1,97 @@
+  [1m[36m (27.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (12.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateContactTypes (20140606234625)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "contact_types" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140606234625"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateContacts (20140606234851)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "contacts" ("id" serial primary key, "contact_type_id" integer, "value" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_contacts_on_contact_type_id" ON "contacts"  ("contact_type_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606234851"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Migrating to CreateCampaigns (20140606234938)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "campaigns" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606234938"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Migrating to CreateRoles (20140606234959)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606234959"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Migrating to CreateUsers (20140606235052)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (16.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "password_digest" character varying(255), "campaign_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_users_on_campaign_id" ON "users"  ("campaign_id")[0m
+  [1m[35m (2.3ms)[0m  CREATE  INDEX  "index_users_on_role_id" ON "users"  ("role_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606235052"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Migrating to CreateTests (20140606235312)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (5.5ms)[0m  CREATE TABLE "tests" ("id" serial primary key, "score" decimal, "WPM" decimal, "retention" decimal, "overall" decimal, "user_id" integer, "campaign_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.4ms)[0m  [1mCREATE  INDEX  "index_tests_on_user_id" ON "tests"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_tests_on_campaign_id" ON "tests"  ("campaign_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606235312"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Migrating to CreateSources (20140606235335)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "sources" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606235335"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateResidences (20140606235400)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "residences" ("id" serial primary key, "name" character varying(255), "city_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.5ms)[0m  [1mCREATE  INDEX  "index_residences_on_city_id" ON "residences"  ("city_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140606235400"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCities (20140606235416)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "cities" ("id" serial primary key, "name" character varying(255), "person_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_cities_on_person_id" ON "cities"  ("person_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140606235416"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Migrating to CreateNotes (20140606235519)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "notes" ("id" serial primary key, "value" character varying(255), "person_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.4ms)[0m  [1mCREATE  INDEX  "index_notes_on_person_id" ON "notes"  ("person_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140606235519"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePeople (20140606235649)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePeople (20140606235649)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePeople (20140606235649)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "people" ("id" serial primary key, "firstName" character varying(255), "middleName" character varying(255), "lastName" character varying(255), "secondLastName" character varying(255), "DOB" timestamp, "HID" character varying(255), "EnglishLevel" integer, "SpanishLevel" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140606235649"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUniversities (20140616212829)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (12.7ms)[0m  [1mCREATE TABLE "universities" ("id" serial primary key, "name" character varying(255), "career" character varying(255), "people_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX  "index_universities_on_people_id" ON "universities"  ("people_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140616212829"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateColleges (20140616212852)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "colleges" ("id" serial primary key, "name" character varying(255), "career" character varying(255), "people_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.0ms)[0m  [1mCREATE  INDEX  "index_colleges_on_people_id" ON "colleges"  ("people_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140616212852"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCallcenters (20140616212932)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "callcenters" ("id" serial primary key, "name" character varying(255), "date" timestamp, "people_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_callcenters_on_people_id" ON "callcenters"  ("people_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140616212932"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
