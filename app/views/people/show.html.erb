@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @person.firstName %>
+</p>
+
+<p>
+  <strong>Middlename:</strong>
+  <%= @person.middleName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @person.lastName %>
+</p>
+
+<p>
+  <strong>Secondlastname:</strong>
+  <%= @person.secondLastName %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @person.DOB %>
+</p>
+
+<p>
+  <strong>Hid:</strong>
+  <%= @person.HID %>
+</p>
+
+<p>
+  <strong>Englishlevel:</strong>
+  <%= @person.EnglishLevel %>
+</p>
+
+<p>
+  <strong>Spanishlevel:</strong>
+  <%= @person.SpanishLevel %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

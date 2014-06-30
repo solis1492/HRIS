@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @callcenter.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @callcenter.date %>
+</p>
+
+<p>
+  <strong>People:</strong>
+  <%= @callcenter.people %>
+</p>
+
+<%= link_to 'Edit', edit_callcenter_path(@callcenter) %> |
+<%= link_to 'Back', callcenters_path %>

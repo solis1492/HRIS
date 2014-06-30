@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @test.score %>
+</p>
+
+<p>
+  <strong>Wpm:</strong>
+  <%= @test.WPM %>
+</p>
+
+<p>
+  <strong>Retention:</strong>
+  <%= @test.retention %>
+</p>
+
+<p>
+  <strong>Overall:</strong>
+  <%= @test.overall %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @test.user %>
+</p>
+
+<p>
+  <strong>Campaign:</strong>
+  <%= @test.campaign %>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>
