@@ -4,7 +4,11 @@
   <thead>
     <tr>
       <th>Name</th>
+<<<<<<< HEAD
       
+=======
+      <th>Password digest</th>
+>>>>>>> login&logout
       <th>Campaign</th>
       <th>Role</th>
       <th colspan="3"></th>
@@ -15,12 +19,20 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+<<<<<<< HEAD
         
+=======
+        <td><%= user.password_digest %></td>
+>>>>>>> login&logout
         <td><%= user.campaign %></td>
         <td><%= user.role %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+<<<<<<< HEAD
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure you wanna delete?' } %></td>
+=======
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> login&logout
       </tr>
     <% end %>
   </tbody>

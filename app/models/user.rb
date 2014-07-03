@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   
   has_secure_password
   validates_presence_of :password_digest, :on => :create
@@ -17,4 +18,8 @@ class User < ActiveRecord::Base
 
 
 
+=======
+  belongs_to :campaign
+  belongs_to :role
+>>>>>>> login&logout
 end
