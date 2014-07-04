@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  #get 'sessions/new'
+
+  resources :welcomes
+
+  resources :sessions, :only => [:new, :create,:destroy]
+  match 'login' => 'sessions#new',  via: [:get, :post]
+  match 'logout' => 'sessions#destroy',  via: [:get, :post]
+
+=======
+>>>>>>> login&logout
   resources :callcenters
 
   resources :colleges
@@ -40,7 +51,13 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
+<<<<<<< HEAD
+get '/welcome/index'
+
+
+=======
   #   resources :products
+>>>>>>> login&logout
 
   # Example resource route with options:
   #   resources :products do
